@@ -7,14 +7,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <div class="container glass">
-        <h1>Wordly </h1>
-        <div class="search-box">
-            <input type="text" id="word-input" placeholder="Enter a word...">
-            <button id="search-btn">Search</button>
-        </div>
-        <div id="result"><p class="placeholder-text">Search for a word to see its definition.</p></div>
+
+    <div class="container glass" role="main">
+        <h1>Wordly Dictionary</h1>
+
+        <nav class="tabs" role="tablist" aria-label="Application views">
+            <button class="tab-btn active" id="tab-search" role="tab" aria-selected="true" aria-controls="view-search">Search</button>
+            <button class="tab-btn" id="tab-saved" role="tab" aria-selected="false" aria-controls="view-saved">Saved Words</button>
+        </nav>
+
+        <!-- Search View -->
+        <section id="view-search" role="tabpanel" aria-labelledby="tab-search">
+            <form id="search-form" class="search-box" aria-label="Word search form">
+                <input type="text" id="word-input" placeholder="Enter a word..." aria-label="Word input" autocomplete="off" required />
+                <button type="submit" id="search-btn" aria-label="Search for word">Search</button>
+            </form>
+            <div id="result" aria-live="polite" aria-atomic="true">
+                <p class="placeholder-text">Search for a word to see its definition.</p>
+            </div>
+        </section>
+
+        <!-- Saved Words View -->
+        <section id="view-saved" class="hidden" role="tabpanel" aria-labelledby="tab-saved">
+            <div id="saved-entries" aria-live="polite"></div>
+        </section>
     </div>
 
     <script src="main.js"></script>
